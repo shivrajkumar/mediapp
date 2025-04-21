@@ -30,6 +30,25 @@ TypeScript is a superset of JavaScript which gives you static types and powerful
 
 > 💡 You can disable the TypeScript setup in Expo CLI with the environment variable `EXPO_NO_TYPESCRIPT_SETUP=1 expo start`
 
+## 🏃‍♂️ Running the App
+
+1. Install dependencies:
+   ```sh
+   npm install
+   ```
+
+2. Start the development server:
+   ```sh
+   npm start
+   ```
+
+3. Run on your desired platform:
+   - Press `a` for Android
+   - Press `i` for iOS
+   - Press `w` for web
+
+   Note: For iOS and Android, you'll need the Expo Go app installed on your device or an emulator/simulator set up.
+
 ## 📝 Notes
 
 - [Expo TypeScript guide](https://docs.expo.dev/versions/latest/guides/typescript/)
