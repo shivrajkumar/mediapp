@@ -12,6 +12,11 @@
   "expo": {
     "android": {
       "package": "com.shivrajk92.mediapp"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b2651b5e-f064-4040-9d66-e1147954c607"
+      }
     }
   }
 }
