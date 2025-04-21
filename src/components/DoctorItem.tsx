@@ -1,5 +1,6 @@
 import React from "react";
-import {View, Text, Image, StyleSheet} from "react-native";
+import {View, Text, StyleSheet} from "react-native";
+import {Image} from "expo-image";
 import {colors} from "../utils/color";
 
 interface DoctorItemProps {
@@ -14,7 +15,13 @@ interface DoctorItemProps {
 
 const DoctorItem: React.FC<DoctorItemProps> = ({item, index}) => (
   <View style={styles.doctorCard}>
-    <Image source={{uri: item.image}} style={styles.doctorImage} />
+    <Image
+      source={{uri: item.image}}
+      contentFit="cover"
+      placeholder={{blurhash: "L3C00000"}}
+      transition={1000}
+      style={styles.doctorImage}
+    />
     <View style={styles.doctorInfo}>
       <Text style={styles.doctorName}>{item.name}</Text>
       <Text style={styles.doctorSpecialty}>{item.specialty}</Text>

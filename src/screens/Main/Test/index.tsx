@@ -5,11 +5,11 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
-  Image,
   Platform,
   SafeAreaView,
   ActivityIndicator,
 } from "react-native";
+import {Image} from "expo-image";
 import {Ionicons} from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import styles from "./styles";
@@ -206,7 +206,9 @@ const TestScreen = ({navigation}) => {
                     <Image
                       source={{uri: option.imageUrl}}
                       style={styles.optionImage}
-                      resizeMode="contain"
+                      contentFit="cover"
+                      placeholder={{blurhash: "L3C00000"}}
+                      transition={1000}
                     />
                   </View>
                 </TouchableOpacity>

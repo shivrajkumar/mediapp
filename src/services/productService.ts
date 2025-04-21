@@ -25,6 +25,8 @@ export const fetchProducts = async (): Promise<Product[]> => {
       rating: item.rating,
     }));
 
+    console.log(transformedData);
+
     return transformedData;
   } catch (error) {
     console.error("Error fetching products:", error);

@@ -124,10 +124,10 @@ const AllProductsScreen: React.FC<AllProductsScreenProps> = ({navigation}) => {
   }: ListRenderItemInfo<Product>): React.ReactElement => (
     <ProductCard
       item={item}
-      onAddToCart={handleAddToCart}
+      onAddToCart={() => handleAddToCart(item)}
       quantity={getProductQuantity(item.id)}
-      onIncreaseQuantity={handleIncreaseQuantity}
-      onDecreaseQuantity={handleDecreaseQuantity}
+      onIncreaseQuantity={() => handleIncreaseQuantity(item)}
+      onDecreaseQuantity={() => handleDecreaseQuantity(item)}
     />
   );
 
@@ -212,13 +212,27 @@ const AllProductsScreen: React.FC<AllProductsScreenProps> = ({navigation}) => {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.productsContainer}
           columnWrapperStyle={styles.productRow}
-          // Remove onViewableItemsChanged and viewabilityConfig
           ListEmptyComponent={
             <View style={styles.emptyContainer}>
               <Text style={styles.emptyText}>No products found</Text>
             </View>
           }
         />
+      )}
+
+      {/* Add View Cart button when cart has items */}
+      {getItemCount() > 0 && (
+        <View style={styles.viewCartContainer}>
+          <TouchableOpacity
+            style={styles.viewCartButton}
+            onPress={() => navigation.navigate("Cart")}
+          >
+            <Text style={styles.viewCartButtonText}>
+              View Cart ({getItemCount()})
+            </Text>
+            <Ionicons name="cart" size={20} color={colors.white} />
+          </TouchableOpacity>
+        </View>
       )}
 
       {/* Add Toast component at the end */}

@@ -8,5 +8,10 @@
     "eas": {
       "projectId": "b2651b5e-f064-4040-9d66-e1147954c607"
     }
+  },
+  "expo": {
+    "android": {
+      "package": "com.shivrajk92.mediapp"
+    }
   }
 }

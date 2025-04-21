@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     marginLeft: 20,
     marginBottom: 15,
-    color: "#333",
+    color: colors.textColor,
     backgroundColor: colors.tertiary,
     paddingTop: 20,
   },

@@ -5,9 +5,9 @@ import {
   StyleSheet,
   TouchableOpacity,
   FlatList,
-  Image,
   SafeAreaView,
 } from "react-native";
+import {Image} from "expo-image";
 import {Ionicons} from "@expo/vector-icons";
 import {useCart} from "../../../context/CartContext";
 import styles from "./styles";
@@ -25,7 +25,13 @@ const CartScreen = ({navigation}) => {
 
   const renderCartItem = ({item}) => (
     <View style={styles.cartItem}>
-      <Image source={{uri: item.imageUrl}} style={styles.itemImage} />
+      <Image
+        source={{uri: item.imageUrl}}
+        contentFit="cover"
+        placeholder={{blurhash: "L3C00000"}}
+        transition={1000}
+        style={styles.itemImage}
+      />
       <View style={styles.itemDetails}>
         <Text style={styles.itemName} numberOfLines={2}>
           {item.name}

@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     // justifyContent: "space-between",
     paddingHorizontal: 10,
-    paddingTop: Platform.OS === "android" ? 25 : 50,
+    paddingTop: Platform.OS === "android" ? 5 : 50,
     backgroundColor: colors.tertiary,
   },
   headerTitle: {

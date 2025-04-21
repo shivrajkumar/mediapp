@@ -5,11 +5,12 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
-  Image,
   Platform,
   ImageBackground,
   FlatList,
 } from "react-native";
+
+import {Image} from "expo-image";
 import {Ionicons} from "@expo/vector-icons";
 import StarRating from "../../../components/StarRating";
 import {

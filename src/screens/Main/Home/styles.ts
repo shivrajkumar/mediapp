@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
   heroBg: {
     flex: 1,
     justifyContent: "flex-end",
+    backgroundColor: colors.quinary,
   },
   heroBgImage: {
     borderBottomLeftRadius: 20,

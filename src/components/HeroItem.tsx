@@ -1,6 +1,7 @@
 import React from "react";
-import {View, Text, StyleSheet, TouchableOpacity, Image} from "react-native";
+import {View, Text, StyleSheet, TouchableOpacity} from "react-native";
 import {Ionicons} from "@expo/vector-icons";
+import {Image} from "expo-image";
 import {useNavigation} from "@react-navigation/native";
 import {colors} from "../utils/color";
 
@@ -33,7 +34,13 @@ const HeroItem: React.FC<HeroItemProps> = ({item}) => {
   return (
     <TouchableOpacity style={styles.storyCard} onPress={handlePress}>
       <View style={styles.storyThumbnail}>
-        <Image source={{uri: item.imageUrl}} style={styles.storyImage} />
+        <Image
+          source={{uri: item.imageUrl}}
+          contentFit="cover"
+          placeholder={{blurhash: "L3C00000"}}
+          transition={1000}
+          style={styles.storyImage}
+        />
         <View style={styles.playButton}>
           <Ionicons name="play" size={16} color={colors.tertiary} />
         </View>

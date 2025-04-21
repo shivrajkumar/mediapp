@@ -139,10 +139,10 @@ const TabNavigator = () => {
               style={{
                 position: "absolute",
                 width: tabWidth,
-                height: 50,
+                height: 60,
                 backgroundColor: "rgba(183, 212, 70, 0.15)",
                 borderRadius: 20,
-                bottom: 10,
+                bottom: 0,
                 transform: [{translateX: tabAnimatedValue}],
               }}
             />
@@ -177,6 +177,7 @@ const TabNavigator = () => {
               paddingBottom: 5,
               height: 60,
               position: "relative",
+              backgroundColor: colors.tertiary,
             },
           };
         }}
