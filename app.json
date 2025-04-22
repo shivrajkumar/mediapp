@@ -1,5 +1,5 @@
 {
-  "name": "mediapp",
+  "name": "Traya",
   "slug": "mediapp",
   "plugins": [
     "expo-video"
@@ -10,6 +10,12 @@
     }
   },
   "expo": {
+    "icon": "./src/assets/images/appIcon.png",
+    "splash": {
+      "image": "./src/assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "android": {
       "package": "com.shivrajk92.mediapp"
     },
@@ -17,6 +23,9 @@
       "eas": {
         "projectId": "b2651b5e-f064-4040-9d66-e1147954c607"
       }
+    },
+    "ios": {
+      "bundleIdentifier": "com.shivrajk92.mediapp"
     }
   }
 }

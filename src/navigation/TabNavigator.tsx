@@ -27,7 +27,7 @@ const Stack = createStackNavigator();
 const HomeStack = () => (
   <Stack.Navigator screenOptions={{headerShown: false}}>
     <Stack.Screen name="HomeMain" component={HomeScreen} />
-    <Stack.Screen name="VideoPlayer" component={VideoPlayerScreen} />
+    <Stack.Screen name="VideoPlayer" component={VideoPlayerScreen} options={{headerShown: false, tabBarVisible: false}} />
   </Stack.Navigator>
 );
 
@@ -41,7 +41,7 @@ const TestStack = () => (
 const VideosStack = () => (
   <Stack.Navigator screenOptions={{headerShown: false}}>
     <Stack.Screen name="VideosMain" component={VideosScreen} />
-    <Stack.Screen name="VideoPlayer" component={VideoPlayerScreen} />
+    <Stack.Screen name="VideoPlayer" component={VideoPlayerScreen}  />
   </Stack.Navigator>
 );
 

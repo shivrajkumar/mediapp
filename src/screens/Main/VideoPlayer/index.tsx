@@ -1,19 +1,17 @@
-import React, {useState, useRef, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import {
   View,
   Text,
   TouchableOpacity,
   StyleSheet,
   Dimensions,
-  Platform,
   StatusBar,
 } from "react-native";
 import {Ionicons} from "@expo/vector-icons";
-import {Video as ExpoVideo} from "expo-av";
+import {useVideoPlayer, VideoView, VideoPlayer} from "expo-video";
 import {Video} from "../../../types";
 import styles from "./styles";
 import {colors} from "../../../utils/color";
-const {width, height} = Dimensions.get("window");
 
 interface VideoPlayerScreenProps {
   route: {
@@ -26,65 +24,48 @@ interface VideoPlayerScreenProps {
 
 const VideoPlayerScreen = ({route, navigation}: VideoPlayerScreenProps) => {
   const {video} = route.params;
-  const videoRef = useRef<ExpoVideo>(null);
-  const [status, setStatus] = useState({});
   const [isPlaying, setIsPlaying] = useState(false);
 
+  const player = useVideoPlayer(video.videoUrl, (player) => {
+    player.loop = false;
+    player.play();
+  });
+
   useEffect(() => {
-    // Auto-play when component mounts
-    setTimeout(() => {
-      if (videoRef.current) {
-        videoRef.current.playAsync();
-      }
-    }, 500);
+    const subscription = player.addListener('playingChange', (event: { isPlaying: boolean }) => {
+      setIsPlaying(event.isPlaying);
+    });
 
     return () => {
-      // Pause video when component unmounts
-      if (videoRef.current) {
-        videoRef.current.pauseAsync();
-      }
+      subscription.remove();
     };
-  }, []);
-
-  const handleVideoStatusUpdate = (newStatus: any) => {
-    setStatus(newStatus);
-    setIsPlaying(newStatus.isPlaying);
-  };
+  }, [player]);
 
   const handleBackPress = () => {
     navigation.goBack();
   };
 
   const handleVideoPress = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pauseAsync();
-      } else {
-        videoRef.current.playAsync();
-      }
+    if (isPlaying) {
+      player.pause();
+    } else {
+      player.play();
     }
   };
 
   return (
     <View style={styles.container}>
-      <StatusBar hidden />
+      {/* <StatusBar hidden /> */}
 
       {/* Full Screen Video Player */}
       <TouchableOpacity activeOpacity={1} onPress={handleVideoPress}>
-        <ExpoVideo
-          ref={videoRef}
-          source={{
-            uri: video.videoUrl,
-          }}
-          rate={1.0}
-          volume={1.0}
-          isMuted={false}
-          resizeMode="cover"
-          shouldPlay={true}
-          isLooping={false}
+        <VideoView
           style={styles.video}
-          onPlaybackStatusUpdate={handleVideoStatusUpdate}
-          useNativeControls={false}
+          player={player}
+          allowsFullscreen
+          contentFit="cover"
+          allowsPictureInPicture
+          nativeControls={false}
         />
       </TouchableOpacity>
 
